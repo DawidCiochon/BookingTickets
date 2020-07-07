@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using BookingTickets.Models;
+using BookingTickets.Data;
 
 namespace BookingTickets
 {
@@ -29,6 +30,12 @@ namespace BookingTickets
             services.AddControllersWithViews();
             services.AddDbContext<BookingTicketsContext>(options => 
             options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddScoped<UserRepository>();
+            services.AddScoped<MovieRepository>();
+            services.AddScoped<SeanceRepository>();
+            services.AddScoped<SeatRepository>();
+            services.AddScoped<ReservationRepository>();
+            services.AddScoped<RoomRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

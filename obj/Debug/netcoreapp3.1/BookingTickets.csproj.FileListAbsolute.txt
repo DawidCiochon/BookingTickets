@@ -116,3 +116,4 @@ C:\Users\Admin\Desktop\Courses\C#\BookingTickets\obj\Debug\netcoreapp3.1\staticw
 C:\Users\Admin\Desktop\Courses\C#\BookingTickets\obj\Debug\netcoreapp3.1\BookingTickets.dll
 C:\Users\Admin\Desktop\Courses\C#\BookingTickets\obj\Debug\netcoreapp3.1\BookingTickets.pdb
 C:\Users\Admin\Desktop\Courses\C#\BookingTickets\obj\Debug\netcoreapp3.1\BookingTickets.genruntimeconfig.cache
+C:\Users\Dawid.Ciochon\Projects\BookingTickets\bin\Debug\netcoreapp3.1\DataAnnotationsExtensions.dll

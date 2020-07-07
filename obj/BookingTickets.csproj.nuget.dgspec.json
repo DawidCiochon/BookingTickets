@@ -1,30 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\Desktop\\Courses\\C#\\BookingTickets\\BookingTickets.csproj": {}
+    "C:\\Users\\Dawid.Ciochon\\Projects\\BookingTickets\\BookingTickets.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\Desktop\\Courses\\C#\\BookingTickets\\BookingTickets.csproj": {
+    "C:\\Users\\Dawid.Ciochon\\Projects\\BookingTickets\\BookingTickets.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\Desktop\\Courses\\C#\\BookingTickets\\BookingTickets.csproj",
+        "projectUniqueName": "C:\\Users\\Dawid.Ciochon\\Projects\\BookingTickets\\BookingTickets.csproj",
         "projectName": "BookingTickets",
-        "projectPath": "C:\\Users\\Admin\\Desktop\\Courses\\C#\\BookingTickets\\BookingTickets.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\Desktop\\Courses\\C#\\BookingTickets\\obj\\",
+        "projectPath": "C:\\Users\\Dawid.Ciochon\\Projects\\BookingTickets\\BookingTickets.csproj",
+        "packagesPath": "C:\\Users\\Dawid.Ciochon\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dawid.Ciochon\\Projects\\BookingTickets\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Dawid.Ciochon\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -41,6 +36,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "DataAnnotationsExtensions": {
+              "target": "Package",
+              "version": "[5.0.1.27, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.5, )"
@@ -84,7 +83,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     }

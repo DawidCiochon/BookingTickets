@@ -19,7 +19,7 @@ namespace BookingTickets.Migrations
                 .HasAnnotation("ProductVersion", "3.1.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            modelBuilder.Entity("BookingTickets.Models.Movies", b =>
+            modelBuilder.Entity("BookingTickets.Models.Movie", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -27,12 +27,19 @@ namespace BookingTickets.Migrations
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("Description")
-                        .HasColumnType("text");
+                        .IsRequired()
+                        .HasColumnType("character varying(100)")
+                        .HasMaxLength(100);
 
                     b.Property<int>("Duration")
                         .HasColumnType("integer");
 
+                    b.Property<string>("Picture")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -50,14 +57,35 @@ namespace BookingTickets.Migrations
                     b.Property<int>("SeanceId")
                         .HasColumnType("integer");
 
+                    b.Property<int>("SeatId")
+                        .HasColumnType("integer");
+
                     b.Property<int>("UserId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("SeanceId");
+
                     b.HasIndex("UserId");
 
                     b.ToTable("Reservations");
+                });
+
+            modelBuilder.Entity("BookingTickets.Models.Room", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("RoomName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Rooms");
                 });
 
             modelBuilder.Entity("BookingTickets.Models.Seance", b =>
@@ -70,31 +98,30 @@ namespace BookingTickets.Migrations
                     b.Property<int>("MovieId")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("MoviesId")
-                        .HasColumnType("integer");
-
                     b.Property<int>("RoomId")
                         .HasColumnType("integer");
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<int>("reservationId")
-                        .HasColumnType("integer");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("MoviesId");
+                    b.HasIndex("MovieId");
 
-                    b.ToTable("Seance");
+                    b.HasIndex("RoomId");
+
+                    b.ToTable("Seances");
                 });
 
             modelBuilder.Entity("BookingTickets.Models.Seat", b =>
                 {
-                    b.Property<int>("Number")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<int>("Number")
+                        .HasColumnType("integer");
 
                     b.Property<bool>("Occupied")
                         .HasColumnType("boolean");
@@ -102,7 +129,7 @@ namespace BookingTickets.Migrations
                     b.Property<int>("ReservationId")
                         .HasColumnType("integer");
 
-                    b.HasKey("Number");
+                    b.HasKey("Id");
 
                     b.ToTable("Seats");
                 });
@@ -115,15 +142,19 @@ namespace BookingTickets.Migrations
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("FirstName")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Password")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("userType")
@@ -136,6 +167,12 @@ namespace BookingTickets.Migrations
 
             modelBuilder.Entity("BookingTickets.Models.Reservation", b =>
                 {
+                    b.HasOne("BookingTickets.Models.Seance", null)
+                        .WithMany("Reservations")
+                        .HasForeignKey("SeanceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("BookingTickets.Models.User", null)
                         .WithMany("Reservations")
                         .HasForeignKey("UserId")
@@ -145,9 +182,17 @@ namespace BookingTickets.Migrations
 
             modelBuilder.Entity("BookingTickets.Models.Seance", b =>
                 {
-                    b.HasOne("BookingTickets.Models.Movies", null)
+                    b.HasOne("BookingTickets.Models.Movie", null)
                         .WithMany("Seances")
-                        .HasForeignKey("MoviesId");
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BookingTickets.Models.Room", null)
+                        .WithMany("Seances")
+                        .HasForeignKey("RoomId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
