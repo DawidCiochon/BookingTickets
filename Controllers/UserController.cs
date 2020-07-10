@@ -6,6 +6,8 @@ using BookingTickets.Models;
 using System.Collections.Generic;
 using System.Linq;
 using BookingTickets.Data;
+using Microsoft.AspNetCore.Authorization;
+using BookingTickets.JWT;
 
 namespace BookingTickets.Controllers
 {
@@ -14,19 +16,21 @@ namespace BookingTickets.Controllers
     [ApiController]
     public class UserController : BaseController<User, UserRepository>
     {
-        //private readonly BookingTicketsContext _context;
+        private readonly IJwtAuthenticationManager _jwtAuthenticationManager;
 
-        public UserController(UserRepository repository) : base(repository)
+        public UserController(UserRepository repository, IJwtAuthenticationManager jwtAuthenticationManager) : base(repository)
         {
-            
+            this._jwtAuthenticationManager = jwtAuthenticationManager;
         }
 
-        [AllowAnonymus]
+        [AllowAnonymous]
         [HttpPost("authenticate")]
-        public IAsyncResult Authenticate([FromBody]AuthenticateRequest model)
+        public IActionResult Authenticate([FromBody] UserCred userCred)
         {
-            
-        }
+            var token = _jwtAuthenticationManager.Authenticate(userCred.UserEmail, userCred.Password);
+            if(token == null) return Unauthorized();
+            return Ok(token);
+;        }
 
         /*[HttpPost]
         public IActionResult Create([FromBody]User user){
