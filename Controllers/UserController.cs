@@ -11,7 +11,7 @@ using BookingTickets.JWT;
 
 namespace BookingTickets.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : BaseController<User, UserRepository>
@@ -23,6 +23,8 @@ namespace BookingTickets.Controllers
             this._jwtAuthenticationManager = jwtAuthenticationManager;
         }
 
+        [HttpGet()]
+
         [AllowAnonymous]
         [HttpPost("authenticate")]
         public IActionResult Authenticate([FromBody] UserCred userCred)
@@ -30,7 +32,7 @@ namespace BookingTickets.Controllers
             var token = _jwtAuthenticationManager.Authenticate(userCred.UserEmail, userCred.Password);
             if(token == null) return Unauthorized();
             return Ok(token);
-;        }
+;       }
 
         /*[HttpPost]
         public IActionResult Create([FromBody]User user){

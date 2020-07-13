@@ -20,8 +20,8 @@ namespace BookingTickets
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
-                        //.UseUrls("https://localhost:5001");
+                    webBuilder.UseStartup<Startup>()
+                        .UseUrls("https://localhost:5001");
                 });
     }
 
@@ -29,4 +29,5 @@ namespace BookingTickets
     //https://jasonwatmore.com/post/2019/10/11/aspnet-core-3-jwt-authentication-tutorial-with-example-api#user-service-cs
     //JWT bearer - do autoryzacji
     //https://riptutorial.com/pl/asp-net-core/example/23402/prosta-autoryzacja
+    //https://www.pointblankdevelopment.com.au/blog/134/aspnet-core-20-angular-24-user-registration-and-login-tutorial-example#user-service-cs
 }

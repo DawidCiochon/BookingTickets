@@ -3,15 +3,17 @@ using System;
 using BookingTickets.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace BookingTickets.Migrations
 {
     [DbContext(typeof(BookingTicketsContext))]
-    partial class BookingTicketsContextModelSnapshot : ModelSnapshot
+    [Migration("20200713093354_New3Migration")]
+    partial class New3Migration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
