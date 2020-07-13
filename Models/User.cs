@@ -4,10 +4,10 @@ using BookingTickets.Data;
 
 namespace BookingTickets.Models
 {
-    public enum UserType{
+    /*public enum UserType{
         client = 0,
         admin = 1
-    }
+    }*/
     public class User : IEntity
     {
         public int Id {get; set;}
@@ -26,7 +26,7 @@ namespace BookingTickets.Models
         [DataType(DataType.Password)]
         [MinLength(8, ErrorMessage="Password must be longer than 3 signs")]
         public string Password {get; set;}
-        public UserType userType {get; set;}
+        public bool isAdmin {get; set;}
         public ICollection<Reservation> Reservations {get; set;}
     }
 }

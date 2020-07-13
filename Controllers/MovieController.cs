@@ -11,11 +11,16 @@ namespace BookingTickets.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MovieController : BaseController<Movie, MovieRepository>
+    public class MovieController// : BaseController<Movie, MovieRepository>
     {
-        public MovieController(MovieRepository repository) : base(repository)
+        private readonly BookingTicketsContext _context;
+        public MovieController(/*MovieRepository repository, */BookingTicketsContext context)// : base(repository)
         {
-            
+            this._context = context;
         } 
+
+        public ICollection<Movie> GetAllMovies(){
+            return this._context.Movies.ToList();
+        }
     }
 }

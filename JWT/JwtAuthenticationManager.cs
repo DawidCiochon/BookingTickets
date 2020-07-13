@@ -6,35 +6,35 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using BookingTickets.Models;
 using Microsoft.IdentityModel.Tokens;
+using BookingTickets.Helpers;
+using Microsoft.Extensions.Options;
 
 namespace BookingTickets.JWT
 {
     public class JwtAuthenticationManager : IJwtAuthenticationManager
     {
         private readonly BookingTicketsContext _context;
-        private readonly string _key;
-        public JwtAuthenticationManager(string key){
-            this._key = key;
-        }
-        public JwtAuthenticationManager(BookingTicketsContext context, string key)
+        private readonly AppSettings _appSettings;
+        //private readonly string _key;
+
+        public JwtAuthenticationManager(IOptions<AppSettings> appSettings, BookingTicketsContext context)
         {
+            this._appSettings = appSettings.Value;
             this._context = context;
-            this._key = key;
         }
         public string Authenticate(string userEmail, string password)
         {
-            if(!_context.Users.Any(u => u.Email == userEmail && u.Password == password))
-            {
-                return null;
-            }
+            var user1 = _context.Users.SingleOrDefault(u => u.Email == userEmail && u.Password == password);
+            
+            if(user1==null) return null;
 
             var tokenHandler = new JwtSecurityTokenHandler();
-            var tokenKey = Encoding.ASCII.GetBytes(_key);
+            var tokenKey = Encoding.ASCII.GetBytes(_appSettings.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, userEmail)
+                    new Claim(ClaimTypes.Email, userEmail)
                 }),
                 Expires = DateTime.UtcNow.AddHours(1),
                 SigningCredentials = 

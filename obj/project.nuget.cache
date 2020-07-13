@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "AOXAUPL9kF6BO1TplxpD7XVhmbQKRLeuttRVgl0OFOS6q1Y431nvW8J2eLRhdK3N+iScMtEeS6ahxKaYKUcoDQ==",
+  "dgSpecHash": "E3GjKU/SV/Saba294n+pFcfkTwMo7VptHWjprI4qqUHhR3TLA8/dNkA77oew+6AXlF7Uj8igCZswi+1tHuAa2g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Dawid.Ciochon\\Projects\\Cinema\\BookingTickets\\BookingTickets.csproj",
+  "projectFilePath": "c:\\Users\\Dawid.Ciochon\\Projects\\Cinema\\BookingTickets\\BookingTickets.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Dawid.Ciochon\\.nuget\\packages\\dataannotationsextensions\\5.0.1.27\\dataannotationsextensions.5.0.1.27.nupkg.sha512",
     "C:\\Users\\Dawid.Ciochon\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
@@ -50,7 +50,7 @@
     "C:\\Users\\Dawid.Ciochon\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.7.1\\microsoft.identitymodel.tokens.6.7.1.nupkg.sha512",
     "C:\\Users\\Dawid.Ciochon\\.nuget\\packages\\microsoft.net.http.headers\\2.2.0\\microsoft.net.http.headers.2.2.0.nupkg.sha512",
     "C:\\Users\\Dawid.Ciochon\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
-    "C:\\Users\\Dawid.Ciochon\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "C:\\Users\\Dawid.Ciochon\\.nuget\\packages\\microsoft.netcore.targets\\1.1.3\\microsoft.netcore.targets.1.1.3.nupkg.sha512",
     "C:\\Users\\Dawid.Ciochon\\.nuget\\packages\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
     "C:\\Users\\Dawid.Ciochon\\.nuget\\packages\\newtonsoft.json\\10.0.1\\newtonsoft.json.10.0.1.nupkg.sha512",
     "C:\\Users\\Dawid.Ciochon\\.nuget\\packages\\npgsql\\4.1.3.1\\npgsql.4.1.3.1.nupkg.sha512",
@@ -85,7 +85,7 @@
     "C:\\Users\\Dawid.Ciochon\\.nuget\\packages\\system.reflection.primitives\\4.3.0\\system.reflection.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\Dawid.Ciochon\\.nuget\\packages\\system.reflection.typeextensions\\4.3.0\\system.reflection.typeextensions.4.3.0.nupkg.sha512",
     "C:\\Users\\Dawid.Ciochon\\.nuget\\packages\\system.resources.resourcemanager\\4.3.0\\system.resources.resourcemanager.4.3.0.nupkg.sha512",
-    "C:\\Users\\Dawid.Ciochon\\.nuget\\packages\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512",
+    "C:\\Users\\Dawid.Ciochon\\.nuget\\packages\\system.runtime\\4.3.1\\system.runtime.4.3.1.nupkg.sha512",
     "C:\\Users\\Dawid.Ciochon\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.6.0\\system.runtime.compilerservices.unsafe.4.6.0.nupkg.sha512",
     "C:\\Users\\Dawid.Ciochon\\.nuget\\packages\\system.runtime.extensions\\4.3.0\\system.runtime.extensions.4.3.0.nupkg.sha512",
     "C:\\Users\\Dawid.Ciochon\\.nuget\\packages\\system.runtime.handles\\4.3.0\\system.runtime.handles.4.3.0.nupkg.sha512",

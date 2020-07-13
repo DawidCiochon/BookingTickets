@@ -1,3 +1,4 @@
+using System.Net.Sockets;
 using System.Text;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ using BookingTickets.Data;
 using BookingTickets.JWT;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using BookingTickets.Helpers;
 
 namespace BookingTickets
 {
@@ -35,11 +37,12 @@ namespace BookingTickets
 
             services.AddCors(options =>
             {
-                options.AddPolicy("CorsPolicy",
-                    builder => builder.AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader());
-                    //.AllowCredentials());
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:4200");
+                    }
+                );
             });
 
             services.AddDbContext<BookingTicketsContext>(options => 
@@ -51,7 +54,11 @@ namespace BookingTickets
             services.AddScoped<ReservationRepository>();
             services.AddScoped<RoomRepository>();
 
-            var key = "This my test key";
+            var appSettingSection = Configuration.GetSection("AppSettings");
+            services.Configure<AppSettings>(appSettingSection);
+
+            var appSettings = appSettingSection.Get<AppSettings>();
+            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -63,13 +70,15 @@ namespace BookingTickets
                 x.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(key)),
-                    ValidateIssuer = false
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
                 };
             });
 
-            services.AddSingleton<JwtAuthenticationManager>(
-                new JwtAuthenticationManager(key));
+            services.AddScoped<IJwtAuthenticationManager, JwtAuthenticationManager>();
+            //services.AddSingleton<JwtAuthenticationManager>(
+                //new JwtAuthenticationManager(key));
 
             
         }
@@ -90,8 +99,7 @@ namespace BookingTickets
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            app.UseCors("CorsPolicy");
-            //app.UseMvc();
+            app.UseCors();
 
             app.UseRouting();
 
