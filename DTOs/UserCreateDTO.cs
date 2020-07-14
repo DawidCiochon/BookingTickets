@@ -14,9 +14,8 @@ namespace BookingTickets.DTOs
         public string Email {get; set;}
         [Required]
         [DataType(DataType.Password)]
-        [MinLength(8, ErrorMessage="Password must be longer than 3 signs")]
+        [MinLength(8, ErrorMessage="Password must be longer than 8 characters")]
         public string Password {get; set;}
-        [Required]
-        public bool isAdmin {get; set;}
+        //public bool isAdmin {get; set;}
     }
 }
