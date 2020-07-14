@@ -6,9 +6,9 @@ using BookingTickets.Data;
 
 namespace BookingTickets.Models
 {
-    public class Seat :IEntity
+    public class Seat
     {
-        //[Key]
+        
         public int Id {get; set;}
 
         [Required]

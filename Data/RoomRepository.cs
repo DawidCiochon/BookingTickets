@@ -2,9 +2,9 @@ using BookingTickets.Models;
 
 namespace BookingTickets.Data
 {
-    public class RoomRepository : Repository<Room, BookingTicketsContext>
+    public class RoomRepository
     {
-        public RoomRepository(BookingTicketsContext context) : base(context){
+        public RoomRepository(BookingTicketsContext context){
             
         }
     }

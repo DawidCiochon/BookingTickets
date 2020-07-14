@@ -4,7 +4,7 @@ using BookingTickets.Data;
 
 namespace BookingTickets.Models
 {
-    public class Room : IEntity
+    public class Room
     {
         public int Id {get; set;}
 
