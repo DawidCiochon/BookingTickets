@@ -11,9 +11,9 @@ namespace BookingTickets.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SeanceController : BaseController<Seance, SeanceRepository>
+    public class SeanceController
     {
-        public SeanceController(SeanceRepository repository) : base(repository)
+        public SeanceController(SeanceRepository repository)
         {
             
         } 

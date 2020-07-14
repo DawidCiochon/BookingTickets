@@ -1,8 +1,6 @@
-using BookingTickets.Data;
-
-namespace BookingTickets.Models
+namespace BookingTickets.DTOs
 {
-    public class Reservation
+    public class ReservationDTO
     {
         public int Id {get; set;}
         public int UserId {get; set;}

@@ -11,9 +11,9 @@ namespace BookingTickets.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RoomController : BaseController<Room, RoomRepository>
+    public class RoomController
     {
-        public RoomController(RoomRepository repository) : base(repository)
+        public RoomController(RoomRepository repository)
         {
             
         }

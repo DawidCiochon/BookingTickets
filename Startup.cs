@@ -18,6 +18,7 @@ using BookingTickets.JWT;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using BookingTickets.Helpers;
+using AutoMapper;
 
 namespace BookingTickets
 {
@@ -47,6 +48,8 @@ namespace BookingTickets
 
             services.AddDbContext<BookingTicketsContext>(options => 
             options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<UserRepository>();
             services.AddScoped<MovieRepository>();
             services.AddScoped<SeanceRepository>();

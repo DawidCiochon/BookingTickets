@@ -1,29 +1,37 @@
+using System.Reflection.Metadata;
 using System.Net.Http.Headers;
 using System;
-using System.Collections;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using BookingTickets.Models;
-using System.Collections.Generic;
 using System.Linq;
 using BookingTickets.Data;
 using Microsoft.AspNetCore.Authorization;
 using BookingTickets.JWT;
+using System.Threading.Tasks;
+using System.Web.Http;
+using BookingTickets.DTOs;
+using AutoMapper;
 
 namespace BookingTickets.Controllers
 {
     //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : BaseController<User, UserRepository>
+    public class UserController : ControllerBase
     {
         private readonly IJwtAuthenticationManager _jwtAuthenticationManager;
-
-        public UserController(UserRepository repository, IJwtAuthenticationManager jwtAuthenticationManager) : base(repository)
+        private readonly UserRepository _repo;
+        private readonly IMapper _mapper;
+        public UserController(UserRepository repository, 
+                            IJwtAuthenticationManager jwtAuthenticationManager,
+                            IMapper mapper)
         {
             this._jwtAuthenticationManager = jwtAuthenticationManager;
+            this._repo = repository;
+            this._mapper = mapper;
         }
 
-        [HttpGet()]
 
         [AllowAnonymous]
         [HttpPost("authenticate")]
@@ -34,29 +42,31 @@ namespace BookingTickets.Controllers
             return Ok(token);
 ;       }
 
-        /*[HttpPost]
-        public IActionResult Create([FromBody]User user){
-            if(ModelState.IsValid){
-                Guid guid = Guid.NewGuid();
-                user.Id = Convert.ToInt32(guid);
-                _context.Users.Add(user);
-                _context.SaveChanges();
-                return Ok();
-            }
-            return BadRequest();
+        [HttpPost]
+        public ActionResult <UserDTO> CreateUser(UserCreateDTO userCreateDto)
+        {
+            var user = _mapper.Map<User>(userCreateDto);
+            _repo.InsertUser(user);
+            _repo.SaveChanges();
+
+            var userReadDto = _mapper.Map<UserDTO>(user); 
+
+            return Ok(userReadDto);
         }
 
         [HttpGet("{id}")]
-        public User GetUserDetails(int id){
-            return _context.Users.FirstOrDefault(u => u.Id == id);
+        public ActionResult <User> GetUserDetails(int id){
+            var user = _repo.GetUserById(id);
+            return Ok(user);
         }
 
         [HttpGet]
-        public IEnumerable<User> GetUserRecords(){
-            return _context.Users.ToList();
+        public ActionResult <IEnumerable<User>> GetUserRecords(){
+            var users = _repo.GetUsers();
+            return Ok(users);
         }
 
-        [HttpPut]
+        /*[HttpPut]
         public IActionResult Edit([FromBody]User user){
             if(ModelState.IsValid){
                 _context.Users.Update(user);
@@ -66,7 +76,7 @@ namespace BookingTickets.Controllers
             return BadRequest();
         }
 
-        [HttpDelete("{id}")]
+        /*[HttpDelete("{id}")]
         public IActionResult Delete(int id){
             var data = _context.Users.FirstOrDefault(u => u.Id == id);
             if(data == null){
