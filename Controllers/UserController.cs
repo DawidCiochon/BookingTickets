@@ -1,3 +1,4 @@
+using System.Net;
  using System.Reflection.Metadata;
 using System.Net.Http.Headers;
 using System;
@@ -12,10 +13,13 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using BookingTickets.DTOs;
 using AutoMapper;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
+using BookingTickets.Helpers;
 
 namespace BookingTickets.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -23,24 +27,62 @@ namespace BookingTickets.Controllers
         private readonly IJwtAuthenticationManager _jwtAuthenticationManager;
         private readonly UserRepository _repo;
         private readonly IMapper _mapper;
+        //private UserManager<User> _userManager;
+        //private SignInManager<User> _signInManager;
+        private readonly AppSettings _appSettings;
         public UserController(UserRepository repository, 
                             IJwtAuthenticationManager jwtAuthenticationManager,
-                            IMapper mapper)
+                            IMapper mapper,
+                            /*UserManager userManager,
+                            SignInManager signInManager,*/
+                            IOptions<AppSettings> appSettings)
         {
             this._jwtAuthenticationManager = jwtAuthenticationManager;
             this._repo = repository;
             this._mapper = mapper;
+            //this._userManager = userManager;
+            //this._signInManager = signInManager;
+            this._appSettings = appSettings.Value;
         }
-
 
         [AllowAnonymous]
         [HttpPost("authenticate")]
         public IActionResult Authenticate([FromBody] UserCred userCred)
         {
-            var token = _jwtAuthenticationManager.Authenticate(userCred.UserEmail, userCred.Password);
+            var token = _jwtAuthenticationManager.Authenticate(userCred.Email, userCred.Password);
             if(token == null) return Unauthorized();
-            return Ok(token);
-;       }
+            return Ok(new {token});
+        }
+
+        /*[HttpPost]
+        [Route("login")]
+        // /api/user/login
+        public async Task<IActionResult> Login(UserCred userCred)
+        {
+            var user = await _userManager.FindByNameAsync(userCred.UserEmail);
+            if(user != null && await _userManager.CheckPassword(user, userCred.Password))
+            {
+                var tokenKey = Encoding.ASCII.GetBytes(_appSettings.Secret);
+                var tokenDescriptor = new SecurityTokenDescriptor
+                {
+                    Subject = new ClaimsIdentity(new Claim[]
+                    {
+                        new Claim(ClaimTypes.Email, userEmail)
+                    }),
+                    Expires = DateTime.UtcNow.AddHours(1),
+                    SigningCredentials = 
+                        new SigningCredentials(
+                            new SymmetricSecurityKey(tokenKey),
+                            SecurityAlgorithms.HmacSha256Signature)
+            };
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var securityToken = tokenHandler.CreateToken(tokenDescriptor);
+            var token = tokenHandler.WriteToken(securityToken);
+            return Ok(new {token});
+            }
+            else 
+                return BadRequest(new {message = "Email or password is incorrect"});
+        }*/
 
         [HttpPost]
         public ActionResult <UserDTO> CreateUser(UserCreateDTO userCreateDto)
@@ -65,6 +107,13 @@ namespace BookingTickets.Controllers
             var users = _repo.GetUsers();
             return Ok(users);
         }
+
+        /*[HttpGet("userprofile")]
+        [Authorize]
+        // /api/userprofile
+        public Task<Object> GetUserProfile(){
+            var UserId = 
+        }*/
 
         /*[HttpPut]
         public IActionResult Edit([FromBody]User user){

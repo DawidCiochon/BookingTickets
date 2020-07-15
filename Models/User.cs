@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 using BookingTickets.Data;
+using Microsoft.AspNetCore.Identity;
 
 namespace BookingTickets.Models
 {
