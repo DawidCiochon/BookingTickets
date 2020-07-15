@@ -24,9 +24,11 @@ namespace BookingTickets.JWT
         }
         public string Authenticate(string userEmail, string password)
         {
-            var user1 = _context.Users.SingleOrDefault(u => u.Email == userEmail && u.Password == password);
+            //var user1 = _context.Users.SingleOrDefault(u => u.Email == userEmail && u.Password == password);
             
-            if(user1==null) return null;
+            //if(user1==null) return null;
+            if(!_context.Users.Any(u => u.Email == userEmail && u.Password == password))
+                return null;
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var tokenKey = Encoding.ASCII.GetBytes(_appSettings.Secret);

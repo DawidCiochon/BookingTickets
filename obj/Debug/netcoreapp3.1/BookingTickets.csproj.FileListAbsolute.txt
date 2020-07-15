@@ -271,3 +271,5 @@ C:\Users\Admin\Desktop\Courses\C#\Cinema\BookingTickets\obj\Debug\netcoreapp3.1\
 C:\Users\Admin\Desktop\Courses\C#\Cinema\BookingTickets\obj\Debug\netcoreapp3.1\BookingTickets.dll
 C:\Users\Admin\Desktop\Courses\C#\Cinema\BookingTickets\obj\Debug\netcoreapp3.1\BookingTickets.pdb
 C:\Users\Admin\Desktop\Courses\C#\Cinema\BookingTickets\obj\Debug\netcoreapp3.1\BookingTickets.genruntimeconfig.cache
+C:\Users\Dawid.Ciochon\Projects\Cinema\BookingTickets\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authorization.dll
+C:\Users\Dawid.Ciochon\Projects\Cinema\BookingTickets\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Metadata.dll
