@@ -71,7 +71,7 @@ namespace BookingTickets
                 x.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(x =>
             {
-                x.RequireHttpsMetadata = false;
+                x.RequireHttpsMetadata = true; //false
                 x.SaveToken = true;//false
                 x.TokenValidationParameters = new TokenValidationParameters
                 {

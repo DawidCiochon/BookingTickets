@@ -19,7 +19,7 @@ using BookingTickets.Helpers;
 
 namespace BookingTickets.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -53,36 +53,6 @@ namespace BookingTickets.Controllers
             if(token == null) return Unauthorized();
             return Ok(new {token});
         }
-
-        /*[HttpPost]
-        [Route("login")]
-        // /api/user/login
-        public async Task<IActionResult> Login(UserCred userCred)
-        {
-            var user = await _userManager.FindByNameAsync(userCred.UserEmail);
-            if(user != null && await _userManager.CheckPassword(user, userCred.Password))
-            {
-                var tokenKey = Encoding.ASCII.GetBytes(_appSettings.Secret);
-                var tokenDescriptor = new SecurityTokenDescriptor
-                {
-                    Subject = new ClaimsIdentity(new Claim[]
-                    {
-                        new Claim(ClaimTypes.Email, userEmail)
-                    }),
-                    Expires = DateTime.UtcNow.AddHours(1),
-                    SigningCredentials = 
-                        new SigningCredentials(
-                            new SymmetricSecurityKey(tokenKey),
-                            SecurityAlgorithms.HmacSha256Signature)
-            };
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var securityToken = tokenHandler.CreateToken(tokenDescriptor);
-            var token = tokenHandler.WriteToken(securityToken);
-            return Ok(new {token});
-            }
-            else 
-                return BadRequest(new {message = "Email or password is incorrect"});
-        }*/
 
         [HttpPost]
         public ActionResult <UserDTO> CreateUser(UserCreateDTO userCreateDto)
