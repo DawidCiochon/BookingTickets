@@ -1,25 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Dawid.Ciochon\\Projects\\Cinema\\BookingTickets\\BookingTickets.csproj": {}
+    "C:\\Users\\Admin\\Desktop\\Courses\\C#\\Cinema\\BookingTickets\\BookingTickets.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Dawid.Ciochon\\Projects\\Cinema\\BookingTickets\\BookingTickets.csproj": {
+    "C:\\Users\\Admin\\Desktop\\Courses\\C#\\Cinema\\BookingTickets\\BookingTickets.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dawid.Ciochon\\Projects\\Cinema\\BookingTickets\\BookingTickets.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\Desktop\\Courses\\C#\\Cinema\\BookingTickets\\BookingTickets.csproj",
         "projectName": "BookingTickets",
-        "projectPath": "C:\\Users\\Dawid.Ciochon\\Projects\\Cinema\\BookingTickets\\BookingTickets.csproj",
-        "packagesPath": "C:\\Users\\Dawid.Ciochon\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dawid.Ciochon\\Projects\\Cinema\\BookingTickets\\obj\\",
+        "projectPath": "C:\\Users\\Admin\\Desktop\\Courses\\C#\\Cinema\\BookingTickets\\BookingTickets.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Admin\\Desktop\\Courses\\C#\\Cinema\\BookingTickets\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Dawid.Ciochon\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -80,6 +85,10 @@
               "target": "Package",
               "version": "[2.2.0, )"
             },
+            "Microsoft.Bot.Connector": {
+              "target": "Package",
+              "version": "[4.9.3, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.5, )"
@@ -131,7 +140,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
