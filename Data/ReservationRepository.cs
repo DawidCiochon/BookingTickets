@@ -1,4 +1,8 @@
+using System.Runtime.Intrinsics.X86;
 using BookingTickets.Models;
+using System.Collections.Generic;
+using System;
+using System.Linq;
 
 namespace BookingTickets.Data
 {
@@ -15,7 +19,12 @@ namespace BookingTickets.Data
         }
 
         public Reservation GetReservationById(int reservationId){
-            return this._context.Reservations.FirstOrDefault(r => r.Id == reservarionId);
+            return this._context.Reservations.FirstOrDefault(r => r.Id == reservationId);
+        }
+
+        public IEnumerable<Reservation> GetReservationsBySeanceId(int id)
+        {
+            return this._context.Reservations.Where(r => r.SeanceId == id);
         }
 
         public void InsertReservation(Reservation reservation){

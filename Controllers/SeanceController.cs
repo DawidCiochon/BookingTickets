@@ -14,11 +14,9 @@ namespace BookingTickets.Controllers
     public class SeanceController : ControllerBase
     {
         private readonly SeanceRepository _repo;
-        private readonly IMapper _mapper;
-        public MovieController(SeanceRepository repository, IMapper mapper)
+        public SeanceController(SeanceRepository repository)
         {
             this._repo = repository;
-            this._mapper = mapper;
         } 
 
         [HttpGet("{id}")]
@@ -36,45 +34,43 @@ namespace BookingTickets.Controllers
             return Ok(seances);
         }
 
-        [HttpPost]
-        public ActionResult <Seance> CreateSeance(Movie movie, Room room, DateTime date)
-        {
-            var movieId = movie.Id;
-            var roomId = room.Id;
-            Seance seance = new Seance{
-                StartDate = date,
-                MovieId = movieId,
-                RoomId = roomId
-            };
-            _repo.InsertSeance(seance);
-            _repo.SaveChanges();
-
-            return Ok(seance);
+        [HttpGet("seancesbymovie/{id}")]
+        public ActionResult <IEnumerable<Seance>> GetSeancesByMovieId(int id){
+            var seances = _repo.GetSeanceByMovieId(id);
+            return Ok(seances);
         }
 
-        [HttpPut("{id}")]
-        public ActionResult UpdateMovie(int id, MovieCreateDTO movieUpdateDto)
+        /*[HttpPost]
+        public ActionResult <Seance> CreateSeance([FromBody] DateTime date, Movie movie, Room room)
         {
-            var movieModel = _repo.GetMovieById(id);
-            if(movieModel == null){
+            _repo.InsertSeance(room, movie, date);
+            _repo.SaveChanges();
+
+            return Ok();
+        }*/
+
+        [HttpPut("{id}")]
+        public ActionResult UpdateSeance(int id, Seance seance)
+        {
+            var seance_1 = _repo.GetSeanceById(id);
+            if(seance_1 == null){
                 return NotFound();
             }
 
-            _mapper.Map(movieUpdateDto, movieModel);
-            _repo.UpdateMovie(movieModel);
+            _repo.UpdateSeance(seance_1);
             _repo.SaveChanges();
 
             return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public ActionResult DeleteMovie(int id)
+        public ActionResult DeleteSeance(int id)
         {
-            var movieModel = _repo.GetMovieById(id);
-            if(movieModel == null){
+            var seanceModel = _repo.GetSeanceById(id);
+            if(seanceModel == null){
                 return NotFound();
             }
-            _repo.DeleteMovie(movieModel);
+            _repo.DeleteSeance(seanceModel);
             _repo.SaveChanges();
 
             return NoContent();
