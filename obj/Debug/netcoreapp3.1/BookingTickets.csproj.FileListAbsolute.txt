@@ -275,3 +275,7 @@ C:\Users\Dawid.Ciochon\Projects\Cinema\BookingTickets\bin\Debug\netcoreapp3.1\Mi
 C:\Users\Dawid.Ciochon\Projects\Cinema\BookingTickets\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Metadata.dll
 C:\Users\Admin\Desktop\Courses\C#\Cinema\BookingTickets\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authorization.dll
 C:\Users\Admin\Desktop\Courses\C#\Cinema\BookingTickets\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Metadata.dll
+C:\Users\Admin\Desktop\Courses\C#\Cinema\BookingTickets\bin\Debug\netcoreapp3.1\Microsoft.Bot.Connector.dll
+C:\Users\Admin\Desktop\Courses\C#\Cinema\BookingTickets\bin\Debug\netcoreapp3.1\Microsoft.Bot.Schema.dll
+C:\Users\Admin\Desktop\Courses\C#\Cinema\BookingTickets\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Clients.ActiveDirectory.dll
+C:\Users\Admin\Desktop\Courses\C#\Cinema\BookingTickets\bin\Debug\netcoreapp3.1\Microsoft.Rest.ClientRuntime.dll

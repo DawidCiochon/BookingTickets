@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using BookingTickets.Helpers;
 
+
 namespace BookingTickets.Controllers
 {
     //[Authorize]
@@ -85,18 +86,11 @@ namespace BookingTickets.Controllers
             return Ok(users);
         }
 
-        /*[HttpGet("userprofile")]
-        [Authorize]
-        // /api/userprofile
-        public Task<Object> GetUserProfile(){
-            var UserId = 
-        }*/
-
-        /*[HttpPut]
+        [HttpPut("{id}")]
         public IActionResult Edit([FromBody]User user){
             if(ModelState.IsValid){
-                _context.Users.Update(user);
-                _context.SaveChanges();
+                _repo.UpdateUser(user);
+                _repo.SaveChanges();
                 return Ok();
             }
             return BadRequest();
