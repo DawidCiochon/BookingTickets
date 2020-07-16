@@ -1,4 +1,7 @@
 using BookingTickets.Models;
+using System.Collections.Generic;
+using System.Linq;
+using System;
 
 namespace BookingTickets.Data
 {
@@ -18,11 +21,25 @@ namespace BookingTickets.Data
             return this._context.Seances.FirstOrDefault(s => s.Id == seanceId);
         }
 
-        public void InsertSeance(Seance seance){
+        public IEnumerable<Seance> GetSeanceByMovieId(int id)
+        {
+            return this._context.Seances.Where(s => s.MovieId == id).ToList();
+        }
+
+        
+
+        public object InsertSeance(Room room, Movie movie, DateTime date){
+            var seance = new Seance(){
+                StartDate = date,
+                MovieId = movie.Id,
+                RoomId = room.Id
+            };
             if(seance == null){
                 throw new ArgumentNullException(nameof(seance));
+                return null;
             }
             this._context.Seances.Add(seance);
+            return seance;
         }
 
         public void DeleteSeance(Seance seance){

@@ -10,8 +10,11 @@ namespace BookingTickets.Data
     public class UserRepository
     {
         private readonly BookingTicketsContext _context;
-        public UserRepository(BookingTicketsContext context){
+        private readonly ReservationRepository _rRepo;
+        public UserRepository(BookingTicketsContext context,
+                            ReservationRepository resRep){
             this._context = context;
+            this._rRepo = resRep;
         }   
 
         public IEnumerable<User> GetUsers()
@@ -21,6 +24,11 @@ namespace BookingTickets.Data
 
         public User GetUserById(int userId){
             return this._context.Users.Find(userId);
+        }
+
+        public IEnumerable<User> GetUsersBySeanceId(int id)
+        {
+            return this._context.Users.Where(u => u.Reservations.Any(r => r.SeanceId == id)).ToList();
         }
 
         public void InsertUser(User user){
@@ -44,28 +52,11 @@ namespace BookingTickets.Data
             this._context.SaveChanges();
         }
 
-        /*public User Create(User user, string password)
+        public bool DoesUserWithMailExist(string email)
         {
-            if(string.IsNullOrWhiteSpace(password))
-                throw new ApplicationException("Password is required");
-            if(_context.Users.Any(x => x.Email == user.Email))
-                throw new ApplicationException("Email: " + user.Email + " is already taken");
+            return this._context.Users.Any(user => user.Email == email);
+        }
 
-            byte[] passwordHash;
-            CreatePassword
-        }    
-    }
-
-    private static void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
-        {
-            if (password == null) throw new ArgumentNullException("password");
-            if (string.IsNullOrWhiteSpace(password)) throw new ArgumentException("Value cannot be empty or whitespace only string.", "password");
- 
-            using (var hmac = new System.Security.Cryptography.HMACSHA512())
-            {
-                passwordSalt = hmac.Key;
-                passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
-            }
-        }*/
+        
     }
 }

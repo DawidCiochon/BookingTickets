@@ -78,6 +78,13 @@ namespace BookingTickets.Controllers
             return Ok(users);
         }
 
+        [HttpGet("usersbyseance/{id}")]
+        public ActionResult <IEnumerable<User>> GetUserBySeanceId(int id)
+        {
+            var users = _repo.GetUsersBySeanceId(id);
+            return Ok(users);
+        }
+
         /*[HttpGet("userprofile")]
         [Authorize]
         // /api/userprofile
