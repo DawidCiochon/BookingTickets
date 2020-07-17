@@ -1,3 +1,4 @@
+using System.Reflection.Metadata.Ecma335;
 using System.Runtime.Intrinsics.X86;
 using BookingTickets.Models;
 using System.Collections.Generic;
@@ -41,8 +42,17 @@ namespace BookingTickets.Data
             this._context.Reservations.Remove(reservation);
         }
 
+        public bool DeleteReservation30minBefore(Reservation reservation)
+        {
+            Seance seance = this._context.Seances.SingleOrDefault(s => s.Id == reservation.SeanceId);
+            if((DateTime.Now - seance.StartDate).Minutes > 30)
+                return true;
+            else   
+                return false;
+        }
+
         public void UpdateReservation(Reservation reservation){
-            //this._context.Entry(movie).State = EntityState.Modified;
+            
         }
 
         public void SaveChanges(){

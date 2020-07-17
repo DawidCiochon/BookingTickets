@@ -26,13 +26,11 @@ namespace BookingTickets.Data
             return this._context.Seances.Where(s => s.MovieId == id).ToList();
         }
 
-        
-
-        public object InsertSeance(Room room, Movie movie, DateTime date){
+        public object InsertSeance(int roomId, int movieId, DateTime date){
             var seance = new Seance(){
                 StartDate = date,
-                MovieId = movie.Id,
-                RoomId = room.Id
+                MovieId = movieId,
+                RoomId = roomId
             };
             if(seance == null){
                 throw new ArgumentNullException(nameof(seance));

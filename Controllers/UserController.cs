@@ -92,14 +92,17 @@ namespace BookingTickets.Controllers
             var UserId = 
         }*/
 
-        /*[HttpPut]
-        public IActionResult Edit([FromBody]User user){
-            if(ModelState.IsValid){
-                _context.Users.Update(user);
-                _context.SaveChanges();
-                return Ok();
+        [HttpPut("{id}")]
+        public IActionResult Edit(int id, User user){
+            var userModel = _repo.GetUserById(id);
+            if(userModel == null){
+                return NotFound();
             }
-            return BadRequest();
+
+            _repo.UpdateUser(user);
+            _repo.SaveChanges();
+
+            return NoContent();
         }
 
         /*[HttpDelete("{id}")]

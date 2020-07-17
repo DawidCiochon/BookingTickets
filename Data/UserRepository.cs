@@ -45,7 +45,7 @@ namespace BookingTickets.Data
         }
 
         public void UpdateUser(User user){
-            this._context.Entry(user).State = EntityState.Modified;
+            //this._context.Entry(user).State = EntityState.Modified;
         }
 
         public void SaveChanges(){

@@ -40,14 +40,14 @@ namespace BookingTickets.Controllers
             return Ok(seances);
         }
 
-        /*[HttpPost]
-        public ActionResult <Seance> CreateSeance([FromBody] DateTime date, Movie movie, Room room)
+        [HttpPost]
+        public ActionResult <Seance> CreateSeance([FromBody] Seance seance)
         {
-            _repo.InsertSeance(room, movie, date);
+            _repo.InsertSeance(seance.RoomId, seance.MovieId, seance.StartDate);
             _repo.SaveChanges();
 
             return Ok();
-        }*/
+        }
 
         [HttpPut("{id}")]
         public ActionResult UpdateSeance(int id, Seance seance)
@@ -57,7 +57,7 @@ namespace BookingTickets.Controllers
                 return NotFound();
             }
 
-            _repo.UpdateSeance(seance_1);
+            _repo.UpdateSeance(seance);
             _repo.SaveChanges();
 
             return NoContent();

@@ -11,7 +11,7 @@ namespace BookingTickets.Models
 
         [Required]
         [DataType(DataType.Time)]
-        [Range(typeof(TimeSpan), "08:00", "23:00")]
+        //[Range(typeof(TimeSpan), "08:00", "23:00")]
         public DateTime StartDate {get; set;}
         public int MovieId {get; set;}
         public ICollection<Reservation> Reservations {get; set;}
