@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1q9wDjOnE9So0QyYBFTZrBd1/fmBliwCBUBWwRrGetQP/+7Pj6a+3MUWrc4z/4zWOz8uahgwqhbNuVdRaffleQ==",
+  "dgSpecHash": "GaTGMk7HO9YJkronRpqlcwKPKDfFsi3725SdGAjWvS0yqG8CujZpjxvwJqxcgHvaH5rtSvvpznVR6TRbsNZnSg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Dawid.Ciochon\\Projects\\Cinema\\BookingTickets\\BookingTickets.csproj",
+  "projectFilePath": "C:\\Users\\Dawid.Ciochon\\Downloads\\Dawid Cichoń\\BookingTickets\\BookingTickets.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Dawid.Ciochon\\.nuget\\packages\\automapper\\10.0.0\\automapper.10.0.0.nupkg.sha512",
     "C:\\Users\\Dawid.Ciochon\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.0.0\\automapper.extensions.microsoft.dependencyinjection.8.0.0.nupkg.sha512",

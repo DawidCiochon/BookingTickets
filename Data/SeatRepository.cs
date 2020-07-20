@@ -22,9 +22,6 @@ namespace BookingTickets.Data
         }
 
         public void InsertSeat(Seat seat){
-            if(seat == null){
-                throw new ArgumentNullException(nameof(seat));
-            }
             this._context.Seats.Add(seat);
         }
 

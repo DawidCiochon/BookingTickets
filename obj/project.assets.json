@@ -7217,11 +7217,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Dawid.Ciochon\\Projects\\Cinema\\BookingTickets\\BookingTickets.csproj",
+      "projectUniqueName": "C:\\Users\\Dawid.Ciochon\\Downloads\\Dawid Cichoń\\BookingTickets\\BookingTickets.csproj",
       "projectName": "BookingTickets",
-      "projectPath": "C:\\Users\\Dawid.Ciochon\\Projects\\Cinema\\BookingTickets\\BookingTickets.csproj",
+      "projectPath": "C:\\Users\\Dawid.Ciochon\\Downloads\\Dawid Cichoń\\BookingTickets\\BookingTickets.csproj",
       "packagesPath": "C:\\Users\\Dawid.Ciochon\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Dawid.Ciochon\\Projects\\Cinema\\BookingTickets\\obj\\",
+      "outputPath": "C:\\Users\\Dawid.Ciochon\\Downloads\\Dawid Cichoń\\BookingTickets\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Dawid.Ciochon\\AppData\\Roaming\\NuGet\\NuGet.Config"
